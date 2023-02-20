@@ -20,7 +20,6 @@ options:
                     	Username to login to neo4j (defaults to neo4j)
   -p PASSWORD, --password PASSWORD
                     	Password to login to neo4j (defaults to bloodhound)
-  -bh, --bloodhound 	Adds the shared password SharesPassword relationship
   -hash, --hash     	Add the "Hash" field to users in BloodHound
   -v, --verbose     	verbose
   -r, --redact      	Redact hashes from stdout
