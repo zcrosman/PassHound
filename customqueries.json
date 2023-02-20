@@ -1,0 +1,73 @@
+
+{
+    "queries": [
+        {
+            "name": "Find all accounts that share passwords",
+            "category": "Password Sharing",
+            "queryList": [
+                {
+                    "final": true,
+                    "query": "MATCH p=(u:User)-[r:SharesPasswordWith]->(n) return p"
+                }
+            ]
+        },
+        {
+            "name": "Find all owned accounts that share passwords",
+            "category": "Password Sharing",
+            "queryList": [
+                {
+                    "final": true,
+                    "query": "MATCH p=(u:User)-[r:SharesPasswordWith]->(n) where u.owned = true return p"
+                }
+            ]
+        },
+        {
+            "name": "Find kerberoastable accounts that share passwords",
+            "category": "Password Sharing",
+            "queryList": [
+                {
+                    "final": true,
+                    "query": "MATCH p=(u1:User)-[r:SharesPasswordWith]->(u2) where u1.hasspn = true return p"
+                }
+            ]
+        },
+        {
+            "name": "Shortest Paths to high value targets through password sharing",
+            "category": "Password Sharing",
+            "queryList": [
+                {
+                    "final": true,
+                    "query": "MATCH p=shortestPath((n)-[:MemberOf|SharesPasswordWith*1..]->(m {highvalue:true})) WHERE NOT n=m RETURN p",
+                    "allowCollapse": true,
+                    "endNode": "{}"
+                }
+            ]
+        },
+        {
+            "name": "Paths to Domain Admin through password sharing",
+            "category": "Password Sharing",
+            "queryList": [
+                {
+                    "final": true,
+                    "query": "MATCH p=shortestPath((n)-[:MemberOf|SharesPasswordWith*1..]->(m:Group)) WHERE m.objectid =~ \"(?i)S-1-5-.*-512\" AND NOT n=m RETURN p",
+                    "allowCollapse": true,
+                    "endNode": "{}"
+                }
+            ]
+        },
+        {
+            "name": "All paths to Domain Admin (including password reuse)",
+            "category": "Password Sharing",
+            "queryList": [
+                {
+                    "final": true,
+                    "query": "MATCH p=(n:Group)<-[*1..]-(m) WHERE n.objectid =~ \"(?i)S-1-5-.*-512\" RETURN p",
+                    "allowCollapse": true,
+                    "endNode": "{}"
+                }
+            ]
+        }
+
+    ]
+}
+
