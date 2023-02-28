@@ -7,7 +7,7 @@
             "queryList": [
                 {
                     "final": true,
-                    "query": "MATCH p=(u:User)-[r:SharesPasswordWith]->(n) return p"
+                    "query": "MATCH p=(u:User)-[r:SharesPassword]->(n) return p"
                 }
             ]
         },
@@ -17,7 +17,7 @@
             "queryList": [
                 {
                     "final": true,
-                    "query": "MATCH p=(u:User)-[r:SharesPasswordWith]->(n) where u.owned = true return p"
+                    "query": "MATCH p=(u:User)-[r:SharesPassword]->(n) where u.owned = true return p"
                 }
             ]
         },
@@ -27,7 +27,7 @@
             "queryList": [
                 {
                     "final": true,
-                    "query": "MATCH p=(u1:User)-[r:SharesPasswordWith]->(u2) where u1.hasspn = true return p"
+                    "query": "MATCH p=(u1:User)-[r:SharesPassword]->(u2) where u1.hasspn = true return p"
                 }
             ]
         },
@@ -37,7 +37,7 @@
             "queryList": [
                 {
                     "final": true,
-                    "query": "MATCH p=shortestPath((n)-[:MemberOf|SharesPasswordWith*1..]->(m {highvalue:true})) WHERE NOT n=m RETURN p",
+                    "query": "MATCH p=shortestPath((n)-[:MemberOf|SharesPassword*1..]->(m {highvalue:true})) WHERE NOT n=m RETURN p",
                     "allowCollapse": true,
                     "endNode": "{}"
                 }
@@ -49,7 +49,7 @@
             "queryList": [
                 {
                     "final": true,
-                    "query": "MATCH p=shortestPath((n)-[:MemberOf|SharesPasswordWith*1..]->(m:Group)) WHERE m.objectid =~ \"(?i)S-1-5-.*-512\" AND NOT n=m RETURN p",
+                    "query": "MATCH p=shortestPath((n)-[:MemberOf|SharesPassword*1..]->(m:Group)) WHERE m.objectid =~ \"(?i)S-1-5-.*-512\" AND NOT n=m RETURN p",
                     "allowCollapse": true,
                     "endNode": "{}"
                 }

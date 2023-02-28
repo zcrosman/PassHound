@@ -21,7 +21,7 @@ def get_ntds(file):
     with open(file, 'r') as input_list:
         for line in input_list:
             line = line.strip()
-            if re.match(".*\..*\\.*:[0-9]{4}:[a-e,0-9]{32}:[a-f,0-9]{32}", line):
+            if re.match(".*\..*\\.*:[0-9]{1,8}:[a-e,0-9]{32}:[a-f,0-9]{32}", line):
                 # print(f'Match: {line}')
                 users.append(line)
             else:
