@@ -2,7 +2,7 @@
 
 This tool parses a ntds file to find users that share a password and creates a new relationship in BloodHound. Because password reuse on the domain is a big problem, it increases the chances of attackers pivoting the network through other users and possibly gaining additional access.
 
-For example, an IT admin may have a regular user account and an domain administrator account that has more privileges. If the same password is used for both accounts, an attacker can easily gain access to the admin account and compromise the domain. PassHound can help to identify this problem by adding the `SharedPasswordWith` relationship to the Neo4j database and have it easily viewable within BloodHound. With this new relationship in BloodHound, it can uncover attack paths that could have previously been overlooked and help report these findings.
+For example, an IT admin may have a regular user account and an domain administrator account that has more privileges. If the same password is used for both accounts, an attacker can easily gain access to the admin account and compromise the domain. PassHound can help to identify this problem by adding the `SharesPassword` relationship to the Neo4j database and have it easily viewable within BloodHound. With this new relationship in BloodHound, it can uncover attack paths that could have previously been overlooked and help report these findings.
 
 
 ## Usage
