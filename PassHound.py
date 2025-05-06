@@ -121,7 +121,7 @@ def add_relationships(db_conn, hashes, verbose, redacted):
                             print(f'        {user1} --> {user2}')
                         try:
                             with db_conn.session() as session:
-                                query = f'MATCH (n {{name:"{user1}"}}),(m {{name:"{user2}"}}) MERGE (n)-[r1:SharesPassword]->(m) MERGE (m)-[r2:SharesPassword]->(n) return n,m'
+                                query = f'MATCH (n:User {{name:"{user1}"}}),(m:Usser {{name:"{user2}"}}) MERGE (n)-[r1:SharesPassword]->(m) MERGE (m)-[r2:SharesPassword]->(n) return n,m'
                                 # print(f'Query: {query}')
                                 tx = session.run(query)
                                 if verbose:
